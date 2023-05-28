@@ -1,57 +1,6 @@
-""" Proyecto final 3: DASHBOARD CIENTIFICO generado con Python y variables dinámicas
-
-Se necesita desde un fichero .csv (accede al Campus online), extraer varios
-indicadores:
-*Recuerda subir el fichero a la carpeta de trabajo, se eliminará
-automáticamente el fichero subido, pasado un tiempo.
-
- ------------------------------------------------------------------------------- 
-
-Ejercicio 1. Almacena los datos del csv en un fichero txt en formato JSON,
-agrupando los datos por día de la semana y por provincias, mostrar los
-acumulado de defunciones, los nuevos casos de covid , hospitalizados y uci
-(num_def,new_cases,num_hosp,num_uci).
-Utilizaremos el módulo csv para facilitar la lectura del fichero.
-	import csv
-	results = []
-	with open('example.csv') as File:
-	reader = csv.DictReader(File)
-	for row in reader:
-		results.append(row)
-	print results
-
-	✔️
-
- ------------------------------------------------------------------------------- 
-
-Ejercicio 2. Realiza 4 gráficas de los datos almacenados en el fichero del
-ejercicio anterior, realiza un menú con un bucle infinito para acceder a cada una
-de las gráficas.
-# Menú
-int(input('''¿Qué gráfica quieres visualizar?
- 1. Defunciones
- 2. Casos
- 3. Hospitalizados
- 4. UCI
- 5. Salir
- '''))
-
-	✔️
-
- ------------------------------------------------------------------------------- 
-
-Ejercicio 3. Extrae del fichero generado en el ejercicio 1 que provincia contiene
-más defunciones, más casos, más hospitalizados y más en uci. Muestra el
-resultado en 4 gráficas de queso. Y realiza un menú como el ejercicio anterior.
-Después de mostrar la gráfica indica que provincia tiene el máximo de la
-variable a mostrar y cual la mínima.
-
-✔️ """
-
 import csv
 import json
 import matplotlib.pyplot as plt
-import numpy as np
 
 # Method to get data from a .csv file and convert it to JSON format
 def get_data_to_json():
@@ -194,7 +143,7 @@ def show_top_province_defunciones(data):
 	print(f"Maxima: {max_prov} {arrow_up}\nMínima: {min_prov} {arrow_down}")
 	# Generate the pie chart with the specified values, labels, explode, and autopct formatting
 	plt.pie(show_values, labels=shown_provinces, explode=explode, autopct='%1.1f%%')
-	plt.title('Casos por Provincia')
+	plt.title('Defunciones por Provincia')
 	plt.axis('equal')
 	plt.show()
 
@@ -244,7 +193,7 @@ def show_top_province_hospitalizados(data):
 	arrow_down = '\u2193'
 	print(f"Maxima: {max_prov} {arrow_up}\nMínima: {min_prov} {arrow_down}")
 	plt.pie(show_values, labels=shown_provinces, explode=explode, autopct='%1.1f%%')
-	plt.title('Casos por Provincia')
+	plt.title('Hospitalizados por Provincia')
 	plt.axis('equal')
 	plt.show()
 
@@ -269,7 +218,7 @@ def show_top_province_uci(data):
 	arrow_down = '\u2193'
 	print(f"Maxima: {max_prov} {arrow_up}\nMínima: {min_prov} {arrow_down}")
 	plt.pie(show_values, labels=shown_provinces, explode=explode, autopct='%1.1f%%')
-	plt.title('Casos por Provincia')
+	plt.title('UCI por Provincia')
 	plt.axis('equal')
 	plt.show()
 
